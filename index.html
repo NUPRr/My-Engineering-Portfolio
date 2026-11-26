@@ -1,0 +1,1436 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nupoor Namdeo Naik | Computer Engineering, Cloud & AI Portfolio</title>
+    <meta name="description" content="Personal portfolio of Nupoor Namdeo Naik — B.Tech Computer Engineering student (9.00 CGPA) passionate about Cloud & Serverless AWS, AI/ML, Cybersecurity, and Full-Stack Web Development.">
+
+    <!-- Editorial & Modern Tech Fonts: Cormorant Garamond, Plus Jakarta Sans & JetBrains Mono -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;0,700;1,600;1,700&family=JetBrains+Mono:wght@400;500;600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Lucide Icons CDN -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Custom Dark Neon-Rose Color Tokens & Typography -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        serif: ['Cormorant Garamond', 'Georgia', 'serif'],
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'monospace'],
+                    },
+                    colors: {
+                        nearBlack: '#0D0D0F',
+                        charcoal: '#151519',
+                        softWhite: '#F5F3F4',
+                        mutedGrey: '#A8A3A6',
+                        hotPink: '#FF4F9A',
+                        rosePink: '#D93678',
+                        blushPink: '#FFB3CF',
+                        borderDark: '#2A2529',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        :root {
+            --bg-main: #0D0D0F;
+            --bg-secondary: #151519;
+            --text-main: #F5F3F4;
+            --text-secondary: #A8A3A6;
+            --accent-hot: #FF4F9A;
+            --accent-rose: #D93678;
+            --accent-blush: #FFB3CF;
+            --border-subtle: #2A2529;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html, body {
+            background-color: var(--bg-main);
+            color: var(--text-main);
+            overflow-x: hidden;
+            max-width: 100vw;
+        }
+
+        /* Faint Architectural Grid on Near Black (#0D0D0F) */
+        .editorial-grid {
+            background-size: 48px 48px;
+            background-image:
+                linear-gradient(to right, rgba(42, 37, 41, 0.55) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(42, 37, 41, 0.55) 1px, transparent 1px);
+            mask-image: radial-gradient(ellipse 90% 80% at 50% 18%, #000 50%, transparent 100%);
+            -webkit-mask-image: radial-gradient(ellipse 90% 80% at 50% 18%, #000 50%, transparent 100%);
+        }
+
+        /* Elevated Charcoal Card (#151519) with Subtle Border (#2A2529) */
+        .editorial-card {
+            background-color: var(--bg-secondary);
+            border: 1px solid var(--border-subtle);
+            box-shadow: 0 12px 32px -12px rgba(0, 0, 0, 0.7);
+            transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1), border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .editorial-card:hover {
+            transform: translateY(-4px);
+            border-color: var(--accent-hot);
+            box-shadow: 0 20px 40px -14px rgba(255, 79, 154, 0.22), 0 0 24px -6px rgba(255, 179, 207, 0.12);
+        }
+
+        /* Primary Hot Pink -> Rose Pink CTA Button */
+        .btn-hot-pink {
+            background: linear-gradient(135deg, var(--accent-hot) 0%, var(--accent-rose) 100%);
+            color: var(--text-main);
+            box-shadow: 0 10px 26px -6px rgba(255, 79, 154, 0.45);
+            transition: transform 0.25s cubic-bezier(0.22, 1, 0.36, 1), filter 0.25s ease, box-shadow 0.25s ease;
+        }
+
+        .btn-hot-pink:hover {
+            filter: brightness(1.08);
+            transform: translateY(-2px);
+            box-shadow: 0 14px 32px -6px rgba(255, 79, 154, 0.6);
+        }
+
+        /* Secondary Charcoal Outlined Button */
+        .btn-dark-outline {
+            background-color: var(--bg-secondary);
+            color: var(--text-main);
+            border: 1.5px solid var(--border-subtle);
+            transition: transform 0.25s ease, border-color 0.25s ease, color 0.25s ease, background-color 0.25s ease;
+        }
+
+        .btn-dark-outline:hover {
+            border-color: var(--accent-blush);
+            color: var(--accent-blush);
+            background-color: rgba(255, 79, 154, 0.08);
+            transform: translateY(-2px);
+        }
+
+        /* Hot Pink to Blush Pink Text Gradient */
+        .pink-gradient-text {
+            background: linear-gradient(120deg, #FF4F9A 0%, #FFB3CF 55%, #FF4F9A 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        /* Fluid Responsive Display Title */
+        .hero-display-title {
+            font-size: clamp(2.5rem, 6.2vw, 4.4rem);
+            line-height: 1.05;
+        }
+
+        /* Gentle Floating Motion for Portrait Badges */
+        @keyframes softFloat {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-6px); }
+        }
+        .float-badge-1 { animation: softFloat 5s ease-in-out infinite; }
+        .float-badge-2 { animation: softFloat 6s ease-in-out 1.2s infinite; }
+
+        /* Scroll Reveal Transition */
+        .reveal {
+            opacity: 0;
+            transform: translateY(18px);
+            transition: opacity 0.65s cubic-bezier(0.22, 1, 0.36, 1), transform 0.65s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Dark Neon-Rose Scrollbar */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #0D0D0F; }
+        ::-webkit-scrollbar-thumb {
+            background: #2A2529;
+            border-radius: 9999px;
+            border: 2px solid #0D0D0F;
+        }
+        ::-webkit-scrollbar-thumb:hover { background: #FF4F9A; }
+    </style>
+</head>
+<body class="font-sans antialiased selection:bg-hotPink/30 selection:text-blushPink relative">
+
+    <!-- Subtle Ambient Aurora Background on Near Black (#0D0D0F) -->
+    <div class="fixed inset-0 pointer-events-none z-0 overflow-hidden">
+        <div class="editorial-grid absolute inset-0"></div>
+        <!-- Diffused Hot Pink & Blush Pink Aurora Glows -->
+        <div class="absolute -top-32 -left-24 w-[24rem] sm:w-[36rem] h-[24rem] sm:h-[36rem] rounded-full bg-hotPink/[0.12] blur-[130px]"></div>
+        <div class="absolute top-1/4 -right-24 w-[22rem] sm:w-[34rem] h-[22rem] sm:h-[34rem] rounded-full bg-blushPink/[0.08] blur-[130px]"></div>
+        <div class="absolute top-2/3 left-1/4 w-[24rem] sm:w-[36rem] h-[24rem] sm:h-[36rem] rounded-full bg-rosePink/[0.10] blur-[140px]"></div>
+        <div class="absolute -bottom-24 right-12 w-[22rem] sm:w-[32rem] h-[22rem] sm:h-[32rem] rounded-full bg-hotPink/[0.09] blur-[130px]"></div>
+    </div>
+
+    <!-- Floating Toast Confirmation Banner -->
+    <div id="toast" class="fixed bottom-5 right-5 left-5 sm:left-auto z-50 translate-y-24 opacity-0 transition-all duration-300 pointer-events-none">
+        <div class="flex items-center gap-3 px-4 py-3 rounded-2xl bg-charcoal text-softWhite border border-hotPink/60 shadow-2xl">
+            <span class="w-6 h-6 rounded-full bg-hotPink text-nearBlack flex items-center justify-center shrink-0">
+                <i data-lucide="check" class="w-3.5 h-3.5 stroke-[2.5]"></i>
+            </span>
+            <span id="toast-message" class="text-xs sm:text-sm font-medium">Copied to clipboard!</span>
+        </div>
+    </div>
+
+    <!-- Dark Resume Preview & Print Modal -->
+    <div id="resume-modal" class="fixed inset-0 z-50 hidden items-center justify-center bg-nearBlack/80 backdrop-blur-md p-4">
+        <div class="w-full max-w-xl rounded-3xl bg-charcoal border border-borderDark p-6 sm:p-8 shadow-2xl space-y-5">
+            <div class="flex items-start justify-between gap-4 border-b border-borderDark pb-4">
+                <div>
+                    <span class="font-mono text-[11px] uppercase tracking-widest text-hotPink font-semibold">Curriculum Vitae</span>
+                    <h3 class="font-serif text-2xl sm:text-3xl font-bold text-softWhite mt-0.5">Nupoor Namdeo Naik</h3>
+                    <p class="text-xs text-mutedGrey mt-1">B.Tech Computer Engineering &bull; CGPA 9.00 &bull; Thane (W), Maharashtra</p>
+                </div>
+                <button onclick="toggleResumeModal(false)" aria-label="Close Resume Modal" class="p-2 rounded-xl text-mutedGrey hover:text-softWhite hover:bg-nearBlack transition">
+                    <i data-lucide="x" class="w-5 h-5"></i>
+                </button>
+            </div>
+
+            <div class="p-4 sm:p-5 rounded-2xl bg-nearBlack border border-borderDark space-y-3 text-xs sm:text-sm text-softWhite">
+                <div class="flex flex-wrap justify-between items-center gap-2">
+                    <span class="font-bold text-softWhite">Cloud &bull; AI/ML &bull; Cybersecurity &bull; Full-Stack</span>
+                    <span class="font-mono text-[11px] px-2.5 py-0.5 rounded-full bg-hotPink/15 text-blushPink border border-hotPink/30 font-semibold">2023 – 2027</span>
+                </div>
+                <p class="text-xs text-mutedGrey leading-relaxed">
+                    Experienced in event-driven AWS Serverless architectures (Lambda, EventBridge, SNS, DynamoDB, SAM), Machine Learning fraud and transit anomaly pipelines (scikit-learn, Random Forest, Isolation Forest), and responsive React.js web interfaces.
+                </p>
+                <div class="pt-1 flex flex-wrap gap-2.5 text-[11px] font-mono text-blushPink">
+                    <span>naiknupoor@gmail.com</span>
+                    <span class="text-hotPink">&bull;</span>
+                    <span>+91 8767689516</span>
+                    <span class="text-hotPink">&bull;</span>
+                    <span>github.com/NUPRr</span>
+                </div>
+            </div>
+
+            <div class="flex flex-wrap items-center justify-between gap-3 pt-1">
+                <span class="text-[11px] font-mono text-mutedGrey">Linked to <code class="text-blushPink font-semibold">assets/nupoornaikcv.pdf</code></span>
+                <div class="flex items-center gap-2.5 ml-auto">
+                    <button onclick="toggleResumeModal(false)" class="px-4 py-2.5 rounded-full text-xs font-semibold text-mutedGrey hover:text-softWhite hover:bg-nearBlack transition">Close</button>
+                    <a href="assets/nupoornaikcv.pdf" download="nupoornaikcv.pdf" onclick="toggleResumeModal(false)" class="btn-hot-pink px-5 py-2.5 rounded-full text-xs font-bold inline-flex items-center gap-2">
+                        <i data-lucide="download" class="w-4 h-4"></i>
+                        <span>Download CV</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 1. STICKY GLASSMORPHIC NAVIGATION BAR -->
+    <header class="sticky top-0 z-40 w-full bg-nearBlack/90 backdrop-blur-xl border-b border-borderDark">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 h-16 sm:h-[74px] flex items-center justify-between">
+            
+            <!-- Brand Logo -->
+            <a href="#home" class="flex items-center gap-2.5 group">
+                <span class="w-9 h-9 rounded-xl bg-charcoal text-hotPink font-serif text-base font-bold flex items-center justify-center border border-hotPink/50 shadow-[0_0_15px_rgba(255,79,154,0.25)] group-hover:bg-hotPink group-hover:text-nearBlack transition-colors">
+                    NN
+                </span>
+                <span class="font-serif text-xl sm:text-2xl font-bold tracking-tight text-softWhite">
+                    Nupoor <span class="italic text-hotPink">Naik</span>
+                </span>
+            </a>
+
+            <!-- Desktop Navigation Links -->
+            <nav id="desktop-nav" class="hidden lg:flex items-center gap-1">
+                <a href="#home" class="nav-link px-3.5 py-2 rounded-full text-xs font-semibold text-blushPink bg-hotPink/15 border border-hotPink/30 transition">Home</a>
+                <a href="#about" class="nav-link px-3.5 py-2 rounded-full text-xs font-semibold text-mutedGrey hover:text-softWhite hover:bg-charcoal transition">About</a>
+                <a href="#skills" class="nav-link px-3.5 py-2 rounded-full text-xs font-semibold text-mutedGrey hover:text-softWhite hover:bg-charcoal transition">Skills</a>
+                <a href="#education" class="nav-link px-3.5 py-2 rounded-full text-xs font-semibold text-mutedGrey hover:text-softWhite hover:bg-charcoal transition">Education</a>
+                <a href="#experience" class="nav-link px-3.5 py-2 rounded-full text-xs font-semibold text-mutedGrey hover:text-softWhite hover:bg-charcoal transition">Experience</a>
+                <a href="#projects" class="nav-link px-3.5 py-2 rounded-full text-xs font-semibold text-mutedGrey hover:text-softWhite hover:bg-charcoal transition">Projects</a>
+                <a href="#contact" class="nav-link px-3.5 py-2 rounded-full text-xs font-semibold text-mutedGrey hover:text-softWhite hover:bg-charcoal transition">Contact</a>
+            </nav>
+
+            <!-- Resume CTA & Mobile Hamburger Toggle -->
+            <div class="flex items-center gap-2.5">
+                <a href="assets/nupoornaikcv.pdf" download="nupoornaikcv.pdf" class="btn-hot-pink px-4 sm:px-5 py-2 rounded-full text-xs font-bold inline-flex items-center gap-1.5">
+                    <span>Resume</span>
+                    <i data-lucide="download" class="w-3.5 h-3.5"></i>
+                </a>
+
+                <button id="mobile-menu-btn" aria-label="Toggle Menu" class="lg:hidden p-2.5 rounded-xl bg-charcoal border border-borderDark text-softWhite hover:border-hotPink transition">
+                    <i id="menu-icon-open" data-lucide="menu" class="w-5 h-5"></i>
+                    <i id="menu-icon-close" data-lucide="x" class="w-5 h-5 hidden"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Responsive Mobile Hamburger Drawer -->
+        <div id="mobile-drawer" class="hidden lg:hidden border-t border-borderDark bg-charcoal/95 backdrop-blur-xl px-4 pt-3 pb-5 space-y-1.5 shadow-2xl">
+            <a href="#home" class="mobile-nav-item block px-4 py-3 rounded-2xl text-sm font-semibold text-blushPink bg-hotPink/15 border border-hotPink/30">Home</a>
+            <a href="#about" class="mobile-nav-item block px-4 py-3 rounded-2xl text-sm font-medium text-mutedGrey hover:bg-nearBlack hover:text-softWhite transition">About</a>
+            <a href="#skills" class="mobile-nav-item block px-4 py-3 rounded-2xl text-sm font-medium text-mutedGrey hover:bg-nearBlack hover:text-softWhite transition">Skills</a>
+            <a href="#education" class="mobile-nav-item block px-4 py-3 rounded-2xl text-sm font-medium text-mutedGrey hover:bg-nearBlack hover:text-softWhite transition">Education</a>
+            <a href="#experience" class="mobile-nav-item block px-4 py-3 rounded-2xl text-sm font-medium text-mutedGrey hover:bg-nearBlack hover:text-softWhite transition">Experience</a>
+            <a href="#projects" class="mobile-nav-item block px-4 py-3 rounded-2xl text-sm font-medium text-mutedGrey hover:bg-nearBlack hover:text-softWhite transition">Projects</a>
+            <a href="#contact" class="mobile-nav-item block px-4 py-3 rounded-2xl text-sm font-medium text-mutedGrey hover:bg-nearBlack hover:text-softWhite transition">Contact</a>
+            <a href="assets/nupoornaikcv.pdf" download="nupoornaikcv.pdf" class="mobile-nav-item block px-4 py-3 rounded-2xl text-sm font-bold text-hotPink hover:bg-nearBlack transition">Download Resume (PDF)</a>
+        </div>
+    </header>
+
+    <!-- MAIN CONTENT CONTAINER -->
+    <main class="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+
+        <!-- 2. HERO SECTION (#home) -->
+        <section id="home" class="pt-10 pb-16 sm:pt-16 sm:pb-24 lg:pt-20 lg:pb-28">
+            <div class="grid lg:grid-cols-12 gap-10 lg:gap-10 items-center">
+                
+                <!-- Left Column: Intro & CTAs (7 Cols) -->
+                <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
+                    
+                    <!-- Status Pill Badge -->
+                    <div class="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-charcoal border border-borderDark shadow-md">
+                        <span class="relative flex h-2.5 w-2.5">
+                            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-hotPink opacity-75"></span>
+                            <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-hotPink"></span>
+                        </span>
+                        <span class="font-mono text-[11px] sm:text-xs font-medium text-blushPink">
+                            Open to Software, Cloud &amp; AI Roles
+                        </span>
+                    </div>
+
+                    <!-- Editorial Display Heading -->
+                    <div class="space-y-3">
+                        <h1 class="hero-display-title font-serif font-bold tracking-tight text-softWhite">
+                            Hi, I’m <br class="sm:hidden">
+                            <span class="italic pink-gradient-text">Nupoor Naik</span>
+                        </h1>
+
+                        <!-- Animated Typing Subtitle -->
+                        <div class="flex flex-wrap items-center justify-center lg:justify-start gap-2 text-sm sm:text-lg font-semibold text-mutedGrey pt-1">
+                            <span class="font-mono text-hotPink">&gt;</span>
+                            <span id="typing-subtitle" class="text-softWhite font-mono"></span>
+                            <span class="inline-block w-2 h-5 bg-hotPink animate-pulse rounded-xs"></span>
+                        </div>
+                    </div>
+
+                    <!-- Career Objective Bio Summary -->
+                    <p class="max-w-xl mx-auto lg:mx-0 text-sm sm:text-base text-mutedGrey leading-relaxed">
+                        A <span class="text-softWhite font-semibold">Computer Engineering student</span> passionate about <span class="text-blushPink font-medium">technology</span>, <span class="text-blushPink font-medium">design</span>, and <span class="text-blushPink font-medium">cybersecurity</span> — curious about how systems work and dedicated to building impactful cloud architectures, intelligent data pipelines, and modern web applications.
+                    </p>
+
+                    <!-- Primary & Secondary CTA Buttons -->
+                    <div class="flex flex-wrap items-center justify-center lg:justify-start gap-3.5 pt-1">
+                        <a href="#projects" class="btn-hot-pink px-7 py-3.5 rounded-full text-xs sm:text-sm font-bold inline-flex items-center gap-2">
+                            <span>Explore Projects</span>
+                            <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                        </a>
+                        <a href="#contact" class="btn-dark-outline px-7 py-3.5 rounded-full text-xs sm:text-sm font-bold">
+                            Get In Touch
+                        </a>
+                    </div>
+
+                    <!-- Social & Direct Icon Links -->
+                    <div class="pt-2 flex flex-wrap items-center justify-center lg:justify-start gap-2.5">
+                        <a href="https://github.com/NUPRr" target="_blank" rel="noopener noreferrer" aria-label="GitHub Profile" class="px-3.5 py-2 rounded-xl bg-charcoal border border-borderDark hover:border-hotPink text-xs font-mono text-softWhite hover:text-blushPink inline-flex items-center gap-2 transition">
+                            <i data-lucide="github" class="w-3.5 h-3.5 text-hotPink"></i>
+                            <span>github.com/NUPRr</span>
+                        </a>
+                        <a href="mailto:naiknupoor@gmail.com" aria-label="Email Nupoor" class="px-3.5 py-2 rounded-xl bg-charcoal border border-borderDark hover:border-hotPink text-xs font-mono text-softWhite hover:text-blushPink inline-flex items-center gap-2 transition">
+                            <i data-lucide="mail" class="w-3.5 h-3.5 text-hotPink"></i>
+                            <span>naiknupoor@gmail.com</span>
+                        </a>
+                        
+                        <a href="tel:+918767689516" aria-label="Call Nupoor" class="px-3.5 py-2 rounded-xl bg-charcoal border border-borderDark hover:border-hotPink text-xs font-mono text-softWhite hover:text-blushPink inline-flex items-center gap-2 transition">
+                            <i data-lucide="phone" class="w-3.5 h-3.5 text-hotPink"></i>
+                            <span>+91 8767689516</span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Right Column: Circular Portrait Avatar Frame with Hot Pink / Blush Pink Halo (5 Cols) -->
+                <div class="lg:col-span-5 flex justify-center mt-4 lg:mt-0">
+                    <div class="relative w-[260px] h-[260px] sm:w-[320px] sm:h-[320px] lg:w-[340px] lg:h-[340px] flex items-center justify-center">
+                        
+                        <!-- Soft Hot Pink & Blush Pink Circular Ambient Halo -->
+                        <div class="absolute -inset-4 rounded-full bg-gradient-to-tr from-hotPink/35 via-blushPink/20 to-rosePink/30 blur-2xl pointer-events-none"></div>
+
+                        <!-- Outer Gradient Ring Frame -->
+                        <div class="relative w-full h-full rounded-full p-[3px] bg-gradient-to-tr from-hotPink via-blushPink to-rosePink shadow-[0_0_40px_rgba(255,79,154,0.3)]">
+                            <!-- Inner Charcoal Matting -->
+                            <div class="w-full h-full rounded-full p-2 bg-charcoal">
+                                <!-- Circular Image Container -->
+                                <div class="w-full h-full rounded-full bg-nearBlack border border-borderDark overflow-hidden relative flex flex-col items-center justify-center">
+                                    
+                                    <!-- Portrait Image with Stylish 'NN' Monogram Fallback -->
+                                    <img 
+                                        src="./assets/nupoor.jpg" 
+                                        alt="Nupoor Namdeo Naik" 
+                                        class="w-full h-full object-cover object-[58%_72%] scale-125"
+                                        onerror="this.style.display='none'; document.getElementById('editorial-monogram').classList.remove('hidden'); document.getElementById('editorial-monogram').classList.add('flex');"
+                                    >
+
+                                    <!-- Circular Monogram Fallback Card -->
+                                    <div id="editorial-monogram" class="hidden absolute inset-0 z-10 rounded-full flex-col items-center justify-center p-6 text-center bg-[radial-gradient(circle_at_top_right,rgba(255,79,154,0.22),transparent_60%),radial-gradient(circle_at_bottom_left,rgba(255,179,207,0.12),transparent_60%)]">
+                                        <div class="w-24 h-24 sm:w-28 sm:h-28 rounded-full bg-charcoal border-2 border-hotPink/70 shadow-[0_0_30px_rgba(255,79,154,0.3)] flex items-center justify-center mb-3">
+                                            <span class="font-serif italic text-3xl sm:text-4xl font-bold pink-gradient-text tracking-tight">NN</span>
+                                        </div>
+                                        <h2 class="font-serif text-lg sm:text-xl font-bold text-softWhite leading-tight">Nupoor Naik</h2>
+                                        <span class="mt-2 px-3 py-0.5 rounded-full text-[10px] font-mono bg-charcoal text-blushPink border border-borderDark">
+                                            assets/nupoor.jpg
+                                        </span>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Floating Stat Chip 1: 9.00 CGPA -->
+                        <div class="float-badge-1 absolute top-2 -right-2 sm:top-4 sm:-right-5 z-30 px-3.5 py-2 rounded-2xl bg-charcoal border border-hotPink/50 shadow-xl flex items-center gap-2">
+                            <span class="w-2.5 h-2.5 rounded-full bg-hotPink shadow-[0_0_8px_#FF4F9A]"></span>
+                            <span class="font-mono text-xs font-bold text-softWhite">9.00 CGPA</span>
+                        </div>
+
+                        <!-- Floating Stat Chip 2: 6+ Projects -->
+                        <div class="float-badge-2 absolute bottom-2 -left-2 sm:bottom-4 sm:-left-5 z-30 px-3.5 py-2 rounded-2xl bg-charcoal text-blushPink border border-blushPink/40 shadow-xl flex items-center gap-2">
+                            <span class="w-2 h-2 rounded-full bg-blushPink"></span>
+                            <span class="font-mono text-xs font-semibold">6+ Projects</span>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- 3. ABOUT SECTION (#about — Responsive Bento Grid) -->
+        <section id="about" class="py-14 sm:py-20 lg:py-24 reveal">
+            <div class="mb-10">
+                <span class="font-mono text-xs uppercase tracking-widest text-hotPink font-semibold">// 01. Introduction</span>
+                <h2 class="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-softWhite mt-1">
+                    About <span class="italic text-hotPink">Me</span>
+                </h2>
+            </div>
+
+            <!-- Bento Grid of Charcoal Cards (#151519) with #2A2529 Borders -->
+            <div class="grid lg:grid-cols-12 gap-6">
+                
+                <!-- Card 1: Professional Summary & Career Objective (7 Cols) -->
+                <div class="lg:col-span-7 editorial-card rounded-3xl p-6 sm:p-8 flex flex-col justify-between space-y-6">
+                    <div class="space-y-4">
+                        <div class="flex flex-wrap items-center justify-between gap-2">
+                            <span class="px-3.5 py-1 rounded-full font-mono text-[11px] font-semibold bg-hotPink/15 text-blushPink border border-hotPink/30">
+                                Career Objective
+                            </span>
+                            <span class="font-mono text-xs text-mutedGrey">
+                                Pillai College of Engineering, Panvel
+                            </span>
+                        </div>
+
+                        <h3 class="font-serif text-2xl sm:text-[26px] font-bold text-softWhite leading-snug">
+                            Curious about how systems work, passionate about design, and committed to continuous step-by-step growth.
+                        </h3>
+
+                        <p class="text-sm text-mutedGrey leading-relaxed">
+                            I am a <strong class="text-softWhite">Computer Engineering student (2023–2027)</strong> passionate about technology, design, and cybersecurity, always eager to learn new skills, gain practical experience, and contribute to impactful projects.
+                        </p>
+
+                        <p class="text-sm text-mutedGrey leading-relaxed">
+                            Adaptable to new tools and environments, with a strong willingness to grow continuously and improve step by step, I am seeking an opportunity to work with a supportive team, enhance technical and professional skills, and build a strong foundation for a successful career in the tech industry.
+                        </p>
+                    </div>
+
+                    <!-- Card 3: Core Pillars inside Left Bento -->
+                    <div class="grid sm:grid-cols-3 gap-3 pt-2">
+                        <div class="p-4 rounded-2xl bg-nearBlack border border-borderDark">
+                            <p class="font-mono text-[11px] uppercase tracking-wider text-hotPink font-semibold">01 / Cloud</p>
+                            <p class="text-sm font-bold text-softWhite mt-1">Cloud &amp; Serverless Architecture</p>
+                            <p class="text-xs text-mutedGrey mt-0.5">AWS Lambda, EventBridge, DynamoDB &amp; SAM</p>
+                        </div>
+                        <div class="p-4 rounded-2xl bg-nearBlack border border-borderDark">
+                            <p class="font-mono text-[11px] uppercase tracking-wider text-hotPink font-semibold">02 / Data &amp; AI</p>
+                            <p class="text-sm font-bold text-softWhite mt-1">AI / ML &amp; Data Intelligence</p>
+                            <p class="text-xs text-mutedGrey mt-0.5">ML Pipelines, NLP, OCR &amp; Gemini API</p>
+                        </div>
+                        <div class="p-4 rounded-2xl bg-nearBlack border border-borderDark">
+                            <p class="font-mono text-[11px] uppercase tracking-wider text-hotPink font-semibold">03 / Web &amp; UI</p>
+                            <p class="text-sm font-bold text-softWhite mt-1">Full-Stack &amp; UI Engineering</p>
+                            <p class="text-xs text-mutedGrey mt-0.5">React.js, Node.js, REST APIs &amp; Responsive UX</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Stacked Bento Cards (5 Cols) -->
+                <div class="lg:col-span-5 flex flex-col gap-6">
+                    
+                    <!-- Card 2: Quick Profile & Personal Details -->
+                    <div class="editorial-card rounded-3xl p-6 sm:p-7 space-y-4">
+                        <div class="flex items-center justify-between">
+                            <span class="font-mono text-xs uppercase tracking-wider text-hotPink font-semibold">Quick Profile &amp; Details</span>
+                            <span class="px-2.5 py-0.5 rounded-full font-mono text-[11px] bg-nearBlack text-blushPink border border-borderDark">CGPA 9.00</span>
+                        </div>
+                        <div class="space-y-2 text-xs sm:text-sm">
+                            <div>
+                                <span class="font-mono text-[11px] text-mutedGrey block">EDUCATION HIGHLIGHT</span>
+                                <p class="font-bold text-softWhite">B.Tech Computer Engineering (2023–2027)</p>
+                            </div>
+                            <div>
+                                <span class="font-mono text-[11px] text-mutedGrey block">LOCATION</span>
+                                <p class="font-semibold text-softWhite">Thane (W), Maharashtra, India</p>
+                            </div>
+                        </div>
+                        <div class="pt-1">
+                            <span class="font-mono text-[11px] text-mutedGrey block mb-2">LANGUAGES KNOWN</span>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="px-3.5 py-1.5 rounded-full text-xs font-mono font-medium bg-nearBlack text-blushPink border border-borderDark">English</span>
+                                <span class="px-3.5 py-1.5 rounded-full text-xs font-mono font-medium bg-nearBlack text-blushPink border border-borderDark">Hindi</span>
+                                <span class="px-3.5 py-1.5 rounded-full text-xs font-mono font-medium bg-nearBlack text-blushPink border border-borderDark">Marathi</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Card 4: Beyond Code / Hobbies -->
+                    <div class="editorial-card rounded-3xl p-6 sm:p-7 space-y-4 flex-1 flex flex-col justify-between">
+                        <div class="space-y-3">
+                            <span class="font-mono text-xs uppercase tracking-wider text-hotPink font-semibold">Beyond Code &amp; Hobbies</span>
+                            <ul class="space-y-3 text-xs sm:text-sm text-mutedGrey">
+                                <li class="flex items-start gap-2.5">
+                                    <span class="w-1.5 h-1.5 rounded-full bg-hotPink mt-2 shrink-0"></span>
+                                    <span>Interested in <strong class="text-softWhite">travel and exploration</strong>, gaining exposure to diverse environments.</span>
+                                </li>
+                                <li class="flex items-start gap-2.5">
+                                    <span class="w-1.5 h-1.5 rounded-full bg-hotPink mt-2 shrink-0"></span>
+                                    <span>Actively engaged in <strong class="text-softWhite">outdoor activities</strong>, promoting fitness and endurance.</span>
+                                </li>
+                                <li class="flex items-start gap-2.5">
+                                    <span class="w-1.5 h-1.5 rounded-full bg-hotPink mt-2 shrink-0"></span>
+                                    <span>Confident in <strong class="text-softWhite">public speaking</strong> and presenting ideas clearly to diverse audiences in both academic and informal settings.</span>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="pt-3 border-t border-borderDark">
+                            <a href="assets/nupoornaikcv.pdf" download="nupoornaikcv.pdf" class="btn-dark-outline w-full px-5 py-2.5 rounded-full text-xs font-bold inline-flex items-center justify-center gap-2">
+                                <i data-lucide="download" class="w-3.5 h-3.5 text-hotPink"></i>
+                                <span>Download Full CV (PDF)</span>
+                            </a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. SKILLS & TECHNICAL STACK (#skills) -->
+        <section id="skills" class="py-14 sm:py-20 lg:py-24 reveal">
+            <div class="mb-8">
+                <span class="font-mono text-xs uppercase tracking-widest text-hotPink font-semibold">// 02. Capabilities</span>
+                <h2 class="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-softWhite mt-1">
+                    Skills &amp; <span class="italic text-hotPink">Technical Stack</span>
+                </h2>
+            </div>
+
+            <!-- Interactive Category Filter Pills -->
+            <div id="skill-filters" class="flex flex-wrap gap-2 mb-8">
+                <button data-filter="all" class="skill-tab active px-4 py-2 rounded-full text-xs font-bold bg-hotPink text-nearBlack shadow-[0_0_16px_rgba(255,79,154,0.4)] transition">
+                    All
+                </button>
+                <button data-filter="languages" class="skill-tab px-4 py-2 rounded-full text-xs font-semibold bg-charcoal text-mutedGrey border border-borderDark hover:border-hotPink hover:text-softWhite transition">
+                    Languages
+                </button>
+                <button data-filter="frameworks" class="skill-tab px-4 py-2 rounded-full text-xs font-semibold bg-charcoal text-mutedGrey border border-borderDark hover:border-hotPink hover:text-softWhite transition">
+                    Frameworks &amp; Libraries
+                </button>
+                <button data-filter="cloud" class="skill-tab px-4 py-2 rounded-full text-xs font-semibold bg-charcoal text-mutedGrey border border-borderDark hover:border-hotPink hover:text-softWhite transition">
+                    Cloud &amp; Serverless
+                </button>
+                <button data-filter="ai" class="skill-tab px-4 py-2 rounded-full text-xs font-semibold bg-charcoal text-mutedGrey border border-borderDark hover:border-hotPink hover:text-softWhite transition">
+                    Data &amp; AI
+                </button>
+                <button data-filter="databases" class="skill-tab px-4 py-2 rounded-full text-xs font-semibold bg-charcoal text-mutedGrey border border-borderDark hover:border-hotPink hover:text-softWhite transition">
+                    Databases
+                </button>
+                <button data-filter="tools" class="skill-tab px-4 py-2 rounded-full text-xs font-semibold bg-charcoal text-mutedGrey border border-borderDark hover:border-hotPink hover:text-softWhite transition">
+                    Tools &amp; Platforms
+                </button>
+            </div>
+
+            <!-- Responsive Skills Grid -->
+            <div id="skills-grid" class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3.5 sm:gap-4 transition-all duration-300">
+                <!-- Populated dynamically via JavaScript -->
+            </div>
+        </section>
+
+        <!-- 5. EDUCATION & EXPERIENCE / CERTIFICATIONS (#education & #experience) -->
+        <div class="py-14 sm:py-20 lg:py-24 grid lg:grid-cols-2 gap-10 lg:gap-12 items-start">
+            
+            <!-- Left Column: Education (#education) -->
+            <section id="education" class="reveal space-y-8">
+                <div>
+                    <span class="font-mono text-xs uppercase tracking-widest text-hotPink font-semibold">// 03. Academic Journey</span>
+                    <h2 class="font-serif text-3xl sm:text-4xl font-bold text-softWhite mt-1">
+                        My <span class="italic text-hotPink">Education</span>
+                    </h2>
+                </div>
+
+                <div class="relative pl-6 border-l-2 border-borderDark space-y-5">
+                    
+                    <!-- B.Tech -->
+                    <div class="editorial-card rounded-3xl p-6 relative">
+                        <span class="absolute -left-[31px] top-7 w-3.5 h-3.5 rounded-full bg-hotPink shadow-[0_0_12px_#FF4F9A] ring-4 ring-nearBlack"></span>
+                        <div class="flex flex-wrap items-center justify-between gap-2 mb-2">
+                            <span class="font-mono text-xs text-mutedGrey font-medium">2023 – 2027</span>
+                            <span class="font-mono text-xs font-bold px-3 py-1 rounded-full bg-hotPink/15 text-blushPink border border-hotPink/40">
+                                CGPA: 9.00
+                            </span>
+                        </div>
+                        <h3 class="text-base sm:text-lg font-bold text-softWhite">B.Tech – Computer Engineering</h3>
+                        <p class="text-xs sm:text-sm font-semibold text-hotPink mt-1">Pillai College of Engineering, Panvel</p>
+                        <p class="text-xs text-mutedGrey mt-2 leading-relaxed">
+                            Undergraduate degree in Computer Engineering with hands-on focus across Cloud Computing, Machine Learning, Cybersecurity, and Full-Stack Development.
+                        </p>
+                    </div>
+
+                    <!-- HSC -->
+                    <div class="editorial-card rounded-3xl p-6 relative">
+                        <span class="absolute -left-[31px] top-7 w-3.5 h-3.5 rounded-full bg-rosePink shadow-[0_0_10px_#D93678] ring-4 ring-nearBlack"></span>
+                        <div class="flex flex-wrap items-center justify-between gap-2 mb-2">
+                            <span class="font-mono text-xs text-mutedGrey font-medium">2023</span>
+                            <span class="font-mono text-xs font-semibold px-3 py-1 rounded-full bg-nearBlack text-blushPink border border-borderDark">
+                                66%
+                            </span>
+                        </div>
+                        <h3 class="text-base sm:text-lg font-bold text-softWhite">HSC – 12th Grade</h3>
+                        <p class="text-xs sm:text-sm font-medium text-mutedGrey mt-1">Phatak Jr. College, Ratnagiri</p>
+                    </div>
+
+                    <!-- SSC -->
+                    <div class="editorial-card rounded-3xl p-6 relative">
+                        <span class="absolute -left-[31px] top-7 w-3.5 h-3.5 rounded-full bg-blushPink shadow-[0_0_10px_#FFB3CF] ring-4 ring-nearBlack"></span>
+                        <div class="flex flex-wrap items-center justify-between gap-2 mb-2">
+                            <span class="font-mono text-xs text-mutedGrey font-medium">2021</span>
+                            <span class="font-mono text-xs font-semibold px-3 py-1 rounded-full bg-nearBlack text-blushPink border border-borderDark">
+                                89%
+                            </span>
+                        </div>
+                        <h3 class="text-base sm:text-lg font-bold text-softWhite">SSC – 10th Grade</h3>
+                        <p class="text-xs sm:text-sm font-medium text-mutedGrey mt-1">Sacred Heart Convent High School</p>
+                    </div>
+
+                </div>
+            </section>
+
+            <!-- Right Column: Experience & Certifications (#experience) -->
+            <section id="experience" class="reveal space-y-8">
+                <div>
+                    <span class="font-mono text-xs uppercase tracking-widest text-hotPink font-semibold">// 04. Industry &amp; Credentials</span>
+                    <h2 class="font-serif text-3xl sm:text-4xl font-bold text-softWhite mt-1">
+                        Experience &amp; <span class="italic text-hotPink">Certifications</span>
+                    </h2>
+                </div>
+
+                <div class="space-y-5">
+                    
+                    <!-- Experience Card -->
+                    <div class="editorial-card rounded-3xl p-6 sm:p-7 space-y-4">
+                        <div class="flex flex-wrap items-center justify-between gap-2">
+                            <span class="px-3 py-1 rounded-full font-mono text-[11px] font-semibold bg-hotPink/15 text-blushPink border border-hotPink/30">
+                                Internship
+                            </span>
+                            <span class="font-mono text-xs text-mutedGrey">Jan 2025 – Mar 2025</span>
+                        </div>
+
+                        <div>
+                            <h3 class="text-lg sm:text-xl font-bold text-softWhite">Web Development Intern</h3>
+                            <p class="text-xs sm:text-sm font-semibold text-hotPink mt-0.5">System Solution &bull; Thane, India</p>
+                        </div>
+
+                        <p class="text-xs sm:text-sm text-mutedGrey leading-relaxed">
+                            Completed a 2-month web development internship gaining hands-on experience building responsive websites using <strong class="text-softWhite">HTML, CSS, and JavaScript</strong>.
+                        </p>
+
+                        <div class="flex flex-wrap gap-2 pt-1">
+                            <span class="px-3 py-1 rounded-lg font-mono text-[11px] bg-nearBlack text-blushPink border border-borderDark">HTML</span>
+                            <span class="px-3 py-1 rounded-lg font-mono text-[11px] bg-nearBlack text-blushPink border border-borderDark">CSS</span>
+                            <span class="px-3 py-1 rounded-lg font-mono text-[11px] bg-nearBlack text-blushPink border border-borderDark">JavaScript</span>
+                            <span class="px-3 py-1 rounded-lg font-mono text-[11px] bg-nearBlack text-blushPink border border-borderDark">Responsive Design</span>
+                        </div>
+                    </div>
+
+                    <!-- Certifications List Card -->
+                    <div class="editorial-card rounded-3xl p-6 sm:p-7 space-y-4">
+                        <span class="font-mono text-xs uppercase tracking-wider text-hotPink font-semibold">Certifications &amp; Workshops</span>
+                        
+                        <div class="divide-y divide-borderDark">
+                            <div class="py-3 first:pt-0 flex items-start justify-between gap-3">
+                                <div>
+                                    <h4 class="text-sm font-bold text-softWhite">Metadata Analyst Specialization</h4>
+                                    <p class="text-xs text-mutedGrey mt-0.5">Coursera</p>
+                                </div>
+                                <span class="px-2.5 py-1 rounded-full font-mono text-[10px] bg-nearBlack text-blushPink border border-borderDark shrink-0">Certified</span>
+                            </div>
+
+                            <div class="py-3 flex items-start justify-between gap-3">
+                                <div>
+                                    <h4 class="text-sm font-bold text-softWhite">AI Tools &amp; Prompt Engineering Workshop</h4>
+                                    <p class="text-xs text-mutedGrey mt-0.5">Be10x.ai</p>
+                                </div>
+                                <span class="px-2.5 py-1 rounded-full font-mono text-[10px] bg-nearBlack text-blushPink border border-borderDark shrink-0">Workshop</span>
+                            </div>
+
+                            <div class="py-3 last:pb-0 flex items-start justify-between gap-3">
+                                <div>
+                                    <h4 class="text-sm font-bold text-softWhite">3D Printing Workshop Certification</h4>
+                                    <p class="text-xs text-mutedGrey mt-0.5">Additive Manufacturing &amp; Prototyping</p>
+                                </div>
+                                <span class="px-2.5 py-1 rounded-full font-mono text-[10px] bg-nearBlack text-blushPink border border-borderDark shrink-0">Certified</span>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </section>
+
+        </div>
+
+        <!-- 6. FEATURED PROJECTS (#projects) -->
+        <section id="projects" class="py-14 sm:py-20 lg:py-24 reveal">
+            <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-10">
+                <div>
+                    <span class="font-mono text-xs uppercase tracking-widest text-hotPink font-semibold">// 05. Selected Work</span>
+                    <h2 class="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-softWhite mt-1">
+                        Featured <span class="italic text-hotPink">Projects</span>
+                    </h2>
+                </div>
+
+                <!-- Project Category Filter Pills -->
+                <div id="project-filters" class="flex flex-wrap gap-2">
+                    <button data-pcat="all" class="proj-tab active px-4 py-2 rounded-full text-xs font-bold bg-hotPink text-nearBlack shadow-[0_0_16px_rgba(255,79,154,0.4)] transition">
+                        All Projects (6)
+                    </button>
+                    <button data-pcat="cloud" class="proj-tab px-4 py-2 rounded-full text-xs font-semibold bg-charcoal text-mutedGrey border border-borderDark hover:border-hotPink hover:text-softWhite transition">
+                        Cloud &amp; Security
+                    </button>
+                    <button data-pcat="ai" class="proj-tab px-4 py-2 rounded-full text-xs font-semibold bg-charcoal text-mutedGrey border border-borderDark hover:border-hotPink hover:text-softWhite transition">
+                        AI &amp; Data
+                    </button>
+                    <button data-pcat="fullstack" class="proj-tab px-4 py-2 rounded-full text-xs font-semibold bg-charcoal text-mutedGrey border border-borderDark hover:border-hotPink hover:text-softWhite transition">
+                        Full-Stack Web
+                    </button>
+                </div>
+            </div>
+
+            <!-- 6 Project Cards Grid -->
+            <div id="projects-grid" class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                
+                <!-- 1. CostGuard -->
+                <article data-category="cloud" class="project-card editorial-card rounded-3xl p-6 sm:p-7 flex flex-col justify-between group">
+                    <div class="space-y-4">
+                        <div class="flex items-center justify-between">
+                            <span class="px-3 py-1 rounded-full font-mono text-[11px] font-semibold bg-hotPink/15 text-blushPink border border-hotPink/30">
+                                Cloud &amp; Security
+                            </span>
+                            <span class="font-mono text-xs text-mutedGrey">01</span>
+                        </div>
+
+                        <h3 class="text-lg font-bold text-softWhite group-hover:text-hotPink transition">
+                            CostGuard – AWS Cost Protection Tool
+                        </h3>
+
+                        <ul class="space-y-2 text-xs sm:text-[13px] text-mutedGrey leading-relaxed">
+                            <li class="flex items-start gap-2">
+                                <span class="text-hotPink font-bold mt-0.5">&bull;</span>
+                                <span>Built an event-driven AWS tool monitoring EC2 launches and automatically stopping unapproved instances.</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <span class="text-hotPink font-bold mt-0.5">&bull;</span>
+                                <span>Developed a responsive cost monitoring &amp; automated alert dashboard with real-time instance controls.</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="pt-5 mt-5 border-t border-borderDark space-y-4">
+                        <div class="flex flex-wrap gap-1.5 font-mono text-[11px]">
+                            <span class="px-2.5 py-1 rounded-lg bg-nearBlack text-blushPink border border-borderDark">Python</span>
+                            <span class="px-2.5 py-1 rounded-lg bg-nearBlack text-blushPink border border-borderDark">AWS Lambda</span>
+                            <span class="px-2.5 py-1 rounded-lg bg-nearBlack text-blushPink border border-borderDark">EventBridge</span>
+                            <span class="px-2.5 py-1 rounded-lg bg-nearBlack text-blushPink border border-borderDark">SNS</span>
+                            <span class="px-2.5 py-1 rounded-lg bg-nearBlack text-blushPink border border-borderDark">DynamoDB</span>
+                            <span class="px-2.5 py-1 rounded-lg bg-nearBlack text-blushPink border border-borderDark">IAM &amp; SAM</span>
+                        </div>
+                        <a href="https://github.com/NUPRr" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 text-xs font-mono font-semibold text-softWhite hover:text-hotPink transition">
+                            <span>View Source on GitHub</span>
+                            <i data-lucide="arrow-up-right" class="w-3.5 h-3.5 text-hotPink"></i>
+                        </a>
+                    </div>
+                </article>
+
+                <!-- 2. FraudWatch -->
+                <article data-category="ai" class="project-card editorial-card rounded-3xl p-6 sm:p-7 flex flex-col justify-between group">
+                    <div class="space-y-4">
+                        <div class="flex items-center justify-between">
+                            <span class="px-3 py-1 rounded-full font-mono text-[11px] font-semibold bg-hotPink/15 text-blushPink border border-hotPink/30">
+                                AI &amp; Data
+                            </span>
+                            <span class="font-mono text-xs text-mutedGrey">02</span>
+                        </div>
+
+                        <h3 class="text-lg font-bold text-softWhite group-hover:text-hotPink transition">
+                            FraudWatch – Card Fraud Detection Dashboard
+                        </h3>
+
+                        <ul class="space-y-2 text-xs sm:text-[13px] text-mutedGrey leading-relaxed">
+                            <li class="flex items-start gap-2">
+                                <span class="text-hotPink font-bold mt-0.5">&bull;</span>
+                                <span>Built a fraud detection pipeline using Logistic Regression and Random Forest across 50,000 transactions.</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <span class="text-hotPink font-bold mt-0.5">&bull;</span>
+                                <span>Created an interactive dashboard with fraud sensitivity controls, transaction review, and model performance analysis.</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="pt-5 mt-5 border-t border-borderDark space-y-4">
+                        <div class="flex flex-wrap gap-1.5 font-mono text-[11px]">
+                            <span class="px-2.5 py-1 rounded-lg bg-nearBlack text-blushPink border border-borderDark">Python</span>
+                            <span class="px-2.5 py-1 rounded-lg bg-nearBlack text-blushPink border border-borderDark">SQL</span>
+                            <span class="px-2.5 py-1 rounded-lg bg-nearBlack text-blushPink border border-borderDark">pandas</span>
+                            <span class="px-2.5 py-1 rounded-lg bg-nearBlack text-blushPink border border-borderDark">scikit-learn</span>
+                            <span class="px-2.5 py-1 rounded-lg bg-nearBlack text-blushPink border border-borderDark">Streamlit</span>
+                        </div>
+                        <a href="https://github.com/NUPRr" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 text-xs font-mono font-semibold text-softWhite hover:text-hotPink transition">
+                            <span>View Source on GitHub</span>
+                            <i data-lucide="arrow-up-right" class="w-3.5 h-3.5 text-hotPink"></i>
+                        </a>
+                    </div>
+                </article>
+
+                <!-- 3. FashionIQ -->
+                <article data-category="ai fullstack" class="project-card editorial-card rounded-3xl p-6 sm:p-7 flex flex-col justify-between group">
+                    <div class="space-y-4">
+                        <div class="flex items-center justify-between">
+                            <span class="px-3 py-1 rounded-full font-mono text-[11px] font-semibold bg-hotPink/15 text-blushPink border border-hotPink/30">
+                                Data Visualization
+                            </span>
+                            <span class="font-mono text-xs text-mutedGrey">03</span>
+                        </div>
+
+                        <h3 class="text-lg font-bold text-softWhite group-hover:text-hotPink transition">
+                            FashionIQ – Competitive Fashion Intelligence Dashboard
+                        </h3>
+
+                        <ul class="space-y-2 text-xs sm:text-[13px] text-mutedGrey leading-relaxed">
+                            <li class="flex items-start gap-2">
+                                <span class="text-hotPink font-bold mt-0.5">&bull;</span>
+                                <span>Developed a competitive intelligence dashboard analyzing fashion brands, products, pricing, and market signals.</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <span class="text-hotPink font-bold mt-0.5">&bull;</span>
+                                <span>Built a responsive interface featuring interactive insights and clean, data-driven visualizations.</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="pt-5 mt-5 border-t border-borderDark space-y-4">
+                        <div class="flex flex-wrap gap-1.5 font-mono text-[11px]">
+                            <span class="px-2.5 py-1 rounded-lg bg-nearBlack text-blushPink border border-borderDark">React.js</span>
+                            <span class="px-2.5 py-1 rounded-lg bg-nearBlack text-blushPink border border-borderDark">JavaScript</span>
+                            <span class="px-2.5 py-1 rounded-lg bg-nearBlack text-blushPink border border-borderDark">Data Visualization</span>
+                        </div>
+                        <a href="https://github.com/NUPRr" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 text-xs font-mono font-semibold text-softWhite hover:text-hotPink transition">
+                            <span>View Source on GitHub</span>
+                            <i data-lucide="arrow-up-right" class="w-3.5 h-3.5 text-hotPink"></i>
+                        </a>
+                    </div>
+                </article>
+
+                <!-- 4. MumbaiPulse -->
+                <article data-category="cloud ai" class="project-card editorial-card rounded-3xl p-6 sm:p-7 flex flex-col justify-between group">
+                    <div class="space-y-4">
+                        <div class="flex items-center justify-between">
+                            <span class="px-3 py-1 rounded-full font-mono text-[11px] font-semibold bg-hotPink/15 text-blushPink border border-hotPink/30">
+                                AI &amp; Cybersecurity
+                            </span>
+                            <span class="font-mono text-xs text-mutedGrey">04</span>
+                        </div>
+
+                        <h3 class="text-lg font-bold text-softWhite group-hover:text-hotPink transition">
+                            MumbaiPulse – Transit Risk &amp; Congestion Intelligence
+                        </h3>
+
+                        <ul class="space-y-2 text-xs sm:text-[13px] text-mutedGrey leading-relaxed">
+                            <li class="flex items-start gap-2">
+                                <span class="text-hotPink font-bold mt-0.5">&bull;</span>
+                                <span>Built Random Forest regression for crowd/congestion risk forecasting from station, time, weather, and traffic features.</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <span class="text-hotPink font-bold mt-0.5">&bull;</span>
+                                <span>Implemented Isolation Forest anomaly detection cybersecurity monitoring layer, weather impact analysis, and travel recommendations.</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="pt-5 mt-5 border-t border-borderDark space-y-4">
+                        <div class="flex flex-wrap gap-1.5 font-mono text-[11px]">
+                            <span class="px-2.5 py-1 rounded-lg bg-nearBlack text-blushPink border border-borderDark">Python</span>
+                            <span class="px-2.5 py-1 rounded-lg bg-nearBlack text-blushPink border border-borderDark">Machine Learning</span>
+                            <span class="px-2.5 py-1 rounded-lg bg-nearBlack text-blushPink border border-borderDark">JavaScript</span>
+                            <span class="px-2.5 py-1 rounded-lg bg-nearBlack text-blushPink border border-borderDark">Scikit-learn</span>
+                            <span class="px-2.5 py-1 rounded-lg bg-nearBlack text-blushPink border border-borderDark">Cybersecurity</span>
+                        </div>
+                        <a href="https://github.com/NUPRr" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 text-xs font-mono font-semibold text-softWhite hover:text-hotPink transition">
+                            <span>View Source on GitHub</span>
+                            <i data-lucide="arrow-up-right" class="w-3.5 h-3.5 text-hotPink"></i>
+                        </a>
+                    </div>
+                </article>
+
+                <!-- 5. e-Yoga Therapy System -->
+                <article data-category="ai fullstack" class="project-card editorial-card rounded-3xl p-6 sm:p-7 flex flex-col justify-between group">
+                    <div class="space-y-4">
+                        <div class="flex items-center justify-between">
+                            <span class="px-3 py-1 rounded-full font-mono text-[11px] font-semibold bg-hotPink/15 text-blushPink border border-hotPink/30">
+                                AI &amp; Wellness
+                            </span>
+                            <span class="font-mono text-xs text-mutedGrey">05</span>
+                        </div>
+
+                        <h3 class="text-lg font-bold text-softWhite group-hover:text-hotPink transition">
+                            e-Yoga Therapy System
+                        </h3>
+
+                        <ul class="space-y-2 text-xs sm:text-[13px] text-mutedGrey leading-relaxed">
+                            <li class="flex items-start gap-2">
+                                <span class="text-hotPink font-bold mt-0.5">&bull;</span>
+                                <span>Developed an interactive AI therapy platform integrating real-time facial detection via face-api.js.</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <span class="text-hotPink font-bold mt-0.5">&bull;</span>
+                                <span>Combined OCR, NLP, and the Gemini API to deliver intelligent, personalized wellness therapy sessions.</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="pt-5 mt-5 border-t border-borderDark space-y-4">
+                        <div class="flex flex-wrap gap-1.5 font-mono text-[11px]">
+                            <span class="px-2.5 py-1 rounded-lg bg-nearBlack text-blushPink border border-borderDark">JavaScript</span>
+                            <span class="px-2.5 py-1 rounded-lg bg-nearBlack text-blushPink border border-borderDark">face-api.js</span>
+                            <span class="px-2.5 py-1 rounded-lg bg-nearBlack text-blushPink border border-borderDark">OCR</span>
+                            <span class="px-2.5 py-1 rounded-lg bg-nearBlack text-blushPink border border-borderDark">NLP</span>
+                            <span class="px-2.5 py-1 rounded-lg bg-nearBlack text-blushPink border border-borderDark">Gemini API</span>
+                        </div>
+                        <a href="https://github.com/NUPRr" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 text-xs font-mono font-semibold text-softWhite hover:text-hotPink transition">
+                            <span>View Source on GitHub</span>
+                            <i data-lucide="arrow-up-right" class="w-3.5 h-3.5 text-hotPink"></i>
+                        </a>
+                    </div>
+                </article>
+
+                <!-- 6. Bloom Café -->
+                <article data-category="fullstack" class="project-card editorial-card rounded-3xl p-6 sm:p-7 flex flex-col justify-between group">
+                    <div class="space-y-4">
+                        <div class="flex items-center justify-between">
+                            <span class="px-3 py-1 rounded-full font-mono text-[11px] font-semibold bg-hotPink/15 text-blushPink border border-hotPink/30">
+                                Full-Stack Web
+                            </span>
+                            <span class="font-mono text-xs text-mutedGrey">06</span>
+                        </div>
+
+                        <h3 class="text-lg font-bold text-softWhite group-hover:text-hotPink transition">
+                            Bloom Café – Full-Stack Web Application
+                        </h3>
+
+                        <ul class="space-y-2 text-xs sm:text-[13px] text-mutedGrey leading-relaxed">
+                            <li class="flex items-start gap-2">
+                                <span class="text-hotPink font-bold mt-0.5">&bull;</span>
+                                <span>Built a responsive café web application featuring user authentication and intuitive menu ordering.</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <span class="text-hotPink font-bold mt-0.5">&bull;</span>
+                                <span>Engineered seamless customer ordering flows backed by full-stack server and database integration.</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="pt-5 mt-5 border-t border-borderDark space-y-4">
+                        <div class="flex flex-wrap gap-1.5 font-mono text-[11px]">
+                            <span class="px-2.5 py-1 rounded-lg bg-nearBlack text-blushPink border border-borderDark">HTML</span>
+                            <span class="px-2.5 py-1 rounded-lg bg-nearBlack text-blushPink border border-borderDark">CSS</span>
+                            <span class="px-2.5 py-1 rounded-lg bg-nearBlack text-blushPink border border-borderDark">JavaScript</span>
+                            <span class="px-2.5 py-1 rounded-lg bg-nearBlack text-blushPink border border-borderDark">Full-Stack</span>
+                        </div>
+                        <a href="https://github.com/NUPRr" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 text-xs font-mono font-semibold text-softWhite hover:text-hotPink transition">
+                            <span>View Source on GitHub</span>
+                            <i data-lucide="arrow-up-right" class="w-3.5 h-3.5 text-hotPink"></i>
+                        </a>
+                    </div>
+                </article>
+
+            </div>
+        </section>
+
+        <!-- 7. CONTACT SECTION (#contact) -->
+        <section id="contact" class="py-14 sm:py-20 lg:py-24 reveal">
+            <div class="mb-10">
+                <span class="font-mono text-xs uppercase tracking-widest text-hotPink font-semibold">// 06. Reach Out</span>
+                <h2 class="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-softWhite mt-1">
+                    Get In <span class="italic text-hotPink">Touch</span>
+                </h2>
+                <p class="text-xs sm:text-sm text-mutedGrey mt-2 max-w-xl">
+                    I’m always open to discussing software engineering roles, cloud/AI internships, or collaborative tech projects.
+                </p>
+            </div>
+
+            <div class="grid lg:grid-cols-12 gap-8 items-start">
+                
+                <!-- Left Column: Direct Contact Cards with One-Click Copy (5 Cols) -->
+                <div class="lg:col-span-5 space-y-3.5">
+                    
+                    <!-- Email -->
+                    <div class="editorial-card rounded-2xl p-4 sm:p-5 flex items-center justify-between gap-3">
+                        <div class="min-w-0">
+                            <p class="font-mono text-[10px] uppercase tracking-wider text-mutedGrey">Direct Email</p>
+                            <p class="text-sm font-bold text-softWhite truncate mt-0.5">naiknupoor@gmail.com</p>
+                        </div>
+                        <button onclick="copyText('naiknupoor@gmail.com', 'Email address copied!')" class="px-3.5 py-2 rounded-xl bg-nearBlack border border-borderDark hover:border-hotPink text-xs font-mono font-semibold text-blushPink hover:text-softWhite transition shrink-0">
+                            Copy
+                        </button>
+                    </div>
+
+                    <!-- Phone -->
+                    <div class="editorial-card rounded-2xl p-4 sm:p-5 flex items-center justify-between gap-3">
+                        <div class="min-w-0">
+                            <p class="font-mono text-[10px] uppercase tracking-wider text-mutedGrey">Mobile Phone</p>
+                            <p class="text-sm font-bold text-softWhite truncate mt-0.5">+91 8767689516</p>
+                        </div>
+                        <div class="flex items-center gap-2 shrink-0">
+                            <button onclick="copyText('+91 8767689516', 'Phone number copied!')" class="px-3 py-2 rounded-xl bg-nearBlack border border-borderDark hover:border-hotPink text-xs font-mono font-semibold text-blushPink hover:text-softWhite transition">
+                                Copy
+                            </button>
+                            <a href="tel:+918767689516" class="px-3 py-2 rounded-xl bg-hotPink text-nearBlack text-xs font-mono font-bold hover:bg-rosePink hover:text-softWhite transition">
+                                Call
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- GitHub -->
+                    <div class="editorial-card rounded-2xl p-4 sm:p-5 flex items-center justify-between gap-3">
+                        <div class="min-w-0">
+                            <p class="font-mono text-[10px] uppercase tracking-wider text-mutedGrey">GitHub</p>
+                            <p class="text-sm font-bold text-softWhite truncate mt-0.5">github.com/NUPRr</p>
+                        </div>
+                        <div class="flex items-center gap-2 shrink-0">
+                            <button onclick="copyText('https://github.com/NUPRr', 'GitHub URL copied!')" class="px-3 py-2 rounded-xl bg-nearBlack border border-borderDark hover:border-hotPink text-xs font-mono font-semibold text-blushPink hover:text-softWhite transition">
+                                Copy
+                            </button>
+                            <a href="https://github.com/NUPRr" target="_blank" rel="noopener noreferrer" class="px-3 py-2 rounded-xl bg-hotPink text-nearBlack text-xs font-mono font-bold hover:bg-rosePink hover:text-softWhite transition">
+                                Visit
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Live Portfolio -->
+                    <div class="editorial-card rounded-2xl p-4 sm:p-5 flex items-center justify-between gap-3">
+                        <div class="min-w-0">
+                            <p class="font-mono text-[10px] uppercase tracking-wider text-mutedGrey">Portfolio Link</p>
+                            <p class="text-sm font-bold text-softWhite truncate mt-0.5">nupoor-portofolio.vercel.app</p>
+                        </div>
+                        <a href="https://nupoor-portofolio.vercel.app" target="_blank" rel="noopener noreferrer" class="px-3.5 py-2 rounded-xl bg-nearBlack border border-borderDark hover:border-hotPink text-xs font-mono font-semibold text-blushPink hover:text-softWhite transition shrink-0">
+                            Open &nearr;
+                        </a>
+                    </div>
+
+                    <!-- Location -->
+                    <div class="editorial-card rounded-2xl p-4 sm:p-5">
+                        <p class="font-mono text-[10px] uppercase tracking-wider text-mutedGrey">Location</p>
+                        <p class="text-sm font-bold text-softWhite mt-0.5">Thane (W), Maharashtra, India</p>
+                        <p class="text-xs text-mutedGrey mt-0.5">Sonia Society, 401, Pratap Talkies, Khopat - 400601</p>
+                    </div>
+
+                </div>
+
+                <!-- Right Column: Interactive Message Form (7 Cols) -->
+                <div class="lg:col-span-7 editorial-card rounded-3xl p-6 sm:p-8">
+                    <h3 class="font-serif text-2xl font-bold text-softWhite">Send a Message</h3>
+                    <p class="text-xs sm:text-sm text-mutedGrey mt-1 mb-6">
+                        Complete the form below to open a pre-filled email draft directly to <span class="font-mono text-blushPink font-semibold">naiknupoor@gmail.com</span>.
+                    </p>
+
+                    <!-- Inline Confirmation Banner -->
+                    <div id="form-banner" class="hidden mb-5 p-4 rounded-2xl bg-nearBlack border border-hotPink text-xs sm:text-sm text-blushPink font-medium">
+                        Thank you! Your default email client is opening with your pre-filled message for Nupoor.
+                    </div>
+
+                    <form id="contact-form" class="space-y-4">
+                        <div class="grid sm:grid-cols-2 gap-4">
+                            <div>
+                                <label for="sender-name" class="block font-mono text-[11px] uppercase tracking-wider text-softWhite font-semibold mb-1.5">Your Name *</label>
+                                <input type="text" id="sender-name" required placeholder="e.g. Ananya Deshmukh" class="w-full px-4 py-3 rounded-xl bg-nearBlack border border-borderDark text-sm text-softWhite placeholder-mutedGrey/50 focus:outline-none focus:border-hotPink focus:ring-2 focus:ring-hotPink/25 transition">
+                            </div>
+                            <div>
+                                <label for="sender-email" class="block font-mono text-[11px] uppercase tracking-wider text-softWhite font-semibold mb-1.5">Your Email *</label>
+                                <input type="email" id="sender-email" required placeholder="ananya@company.com" class="w-full px-4 py-3 rounded-xl bg-nearBlack border border-borderDark text-sm text-softWhite placeholder-mutedGrey/50 focus:outline-none focus:border-hotPink focus:ring-2 focus:ring-hotPink/25 transition">
+                            </div>
+                        </div>
+
+                        <div>
+                            <label for="sender-subject" class="block font-mono text-[11px] uppercase tracking-wider text-softWhite font-semibold mb-1.5">Subject</label>
+                            <input type="text" id="sender-subject" placeholder="Internship Opportunity / Project Collaboration" class="w-full px-4 py-3 rounded-xl bg-nearBlack border border-borderDark text-sm text-softWhite placeholder-mutedGrey/50 focus:outline-none focus:border-hotPink focus:ring-2 focus:ring-hotPink/25 transition">
+                        </div>
+
+                        <div>
+                            <label for="sender-message" class="block font-mono text-[11px] uppercase tracking-wider text-softWhite font-semibold mb-1.5">Message *</label>
+                            <textarea id="sender-message" rows="4" required placeholder="Hi Nupoor, I explored your portfolio and would love to connect regarding..." class="w-full px-4 py-3 rounded-xl bg-nearBlack border border-borderDark text-sm text-softWhite placeholder-mutedGrey/50 focus:outline-none focus:border-hotPink focus:ring-2 focus:ring-hotPink/25 transition resize-none"></textarea>
+                        </div>
+
+                        <div class="pt-2 flex flex-wrap items-center justify-between gap-4">
+                            <button type="submit" class="btn-hot-pink px-7 py-3.5 rounded-full text-xs sm:text-sm font-bold inline-flex items-center gap-2">
+                                <span>Send Message</span>
+                                <i data-lucide="send" class="w-4 h-4"></i>
+                            </button>
+
+                            <a href="mailto:naiknupoor@gmail.com?subject=Portfolio%20Connection" class="font-mono text-xs text-mutedGrey hover:text-blushPink underline underline-offset-4 transition">
+                                Or open mail app directly &nearr;
+                            </a>
+                        </div>
+                    </form>
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+    <!-- 8. FOOTER (#0D0D0F / #151519) -->
+    <footer class="relative z-10 bg-charcoal text-softWhite border-t border-borderDark mt-12">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-12">
+            <div class="flex flex-col md:flex-row items-center justify-between gap-6 pb-8 border-b border-borderDark">
+                
+                <!-- Brand -->
+                <div class="text-center md:text-left">
+                    <a href="#home" class="inline-flex items-center gap-2.5">
+                        <span class="w-8 h-8 rounded-lg bg-hotPink text-nearBlack font-serif text-sm font-bold flex items-center justify-center">NN</span>
+                        <span class="font-serif text-2xl font-bold text-softWhite">
+                            Nupoor <span class="italic text-hotPink">Naik</span>
+                        </span>
+                    </a>
+                    <p class="text-xs text-mutedGrey mt-2 max-w-sm">
+                        Computer Engineering Undergraduate &bull; Crafting thoughtful cloud, AI, cybersecurity, and full-stack experiences.
+                    </p>
+                </div>
+
+                <!-- Quick Section Navigation Links -->
+                <div class="flex flex-wrap items-center justify-center gap-x-5 gap-y-2 text-xs font-medium text-mutedGrey">
+                    <a href="#home" class="hover:text-hotPink transition">Home</a>
+                    <a href="#about" class="hover:text-hotPink transition">About</a>
+                    <a href="#skills" class="hover:text-hotPink transition">Skills</a>
+                    <a href="#education" class="hover:text-hotPink transition">Education</a>
+                    <a href="#experience" class="hover:text-hotPink transition">Experience</a>
+                    <a href="#projects" class="hover:text-hotPink transition">Projects</a>
+                    <a href="#contact" class="hover:text-hotPink transition">Contact</a>
+                </div>
+
+                <!-- Social Icons -->
+                <div class="flex items-center gap-3">
+                    <a href="https://github.com/NUPRr" target="_blank" rel="noopener noreferrer" aria-label="GitHub" class="w-10 h-10 rounded-full bg-nearBlack border border-borderDark hover:border-hotPink text-softWhite hover:text-hotPink flex items-center justify-center transition">
+                        <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24" aria-hidden="true">
+  <path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" />
+</svg>
+                    </a>
+                    <a href="mailto:naiknupoor@gmail.com" aria-label="Email" class="w-10 h-10 rounded-full bg-nearBlack border border-borderDark hover:border-hotPink text-softWhite hover:text-hotPink flex items-center justify-center transition">
+                        <i data-lucide="mail" class="w-4 h-4"></i>
+                    </a>
+                    <a href="tel:+918767689516" aria-label="Call" class="w-10 h-10 rounded-full bg-nearBlack border border-borderDark hover:border-hotPink text-softWhite hover:text-hotPink flex items-center justify-center transition">
+                        <i data-lucide="phone" class="w-4 h-4"></i>
+                    </a>
+                    <a href="#home" aria-label="Back to top" class="w-10 h-10 rounded-full bg-hotPink text-nearBlack hover:bg-blushPink flex items-center justify-center transition">
+                        <i data-lucide="arrow-up" class="w-4 h-4"></i>
+                    </a>
+                </div>
+            </div>
+
+            <div class="pt-6 flex flex-col sm:flex-row items-center justify-between gap-2 text-xs text-mutedGrey">
+                <p>&copy; 2026 Nupoor Namdeo Naik. All rights reserved.</p>
+        
+            </div>
+        </div>
+    </footer>
+
+    <!-- INTERACTIVE APPLICATION SCRIPT -->
+    <script>
+        // Initialize Lucide Icons
+        if (window.lucide) {
+            lucide.createIcons();
+        }
+
+        // 1. Mobile Hamburger Menu Drawer
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileDrawer = document.getElementById('mobile-drawer');
+        const menuIconOpen = document.getElementById('menu-icon-open');
+        const menuIconClose = document.getElementById('menu-icon-close');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            const isHidden = mobileDrawer.classList.toggle('hidden');
+            menuIconOpen.classList.toggle('hidden', !isHidden);
+            menuIconClose.classList.toggle('hidden', isHidden);
+        });
+
+        document.querySelectorAll('.mobile-nav-item').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileDrawer.classList.add('hidden');
+                menuIconOpen.classList.remove('hidden');
+                menuIconClose.classList.add('hidden');
+            });
+        });
+
+        // 2. Animated Typing Subtitle in Hero
+        const typingPhrases = [
+            "Computer Engineering Student",
+            "Cloud & Full-Stack Developer",
+            "AI & Cybersecurity Enthusiast"
+        ];
+        const typingEl = document.getElementById('typing-subtitle');
+        let phraseIndex = 0;
+        let charIndex = 0;
+        let isDeleting = false;
+
+        function runTypingEffect() {
+            const currentPhrase = typingPhrases[phraseIndex];
+            if (isDeleting) {
+                charIndex--;
+                typingEl.textContent = currentPhrase.substring(0, charIndex);
+            } else {
+                charIndex++;
+                typingEl.textContent = currentPhrase.substring(0, charIndex);
+            }
+
+            let delay = isDeleting ? 45 : 80;
+            if (!isDeleting && charIndex === currentPhrase.length) {
+                delay = 1800;
+                isDeleting = true;
+            } else if (isDeleting && charIndex === 0) {
+                isDeleting = false;
+                phraseIndex = (phraseIndex + 1) % typingPhrases.length;
+                delay = 350;
+            }
+            setTimeout(runTypingEffect, delay);
+        }
+        runTypingEffect();
+
+        // 3. Complete CV Skills Inventory & Interactive Category Filter
+        const skillsInventory = [
+            // Programming Languages
+            { name: "Python", category: "languages", label: "Programming Language" },
+            { name: "JavaScript", category: "languages", label: "Programming Language" },
+            { name: "SQL", category: "languages", label: "Programming Language" },
+            { name: "PHP", category: "languages", label: "Programming Language" },
+            { name: "HTML", category: "languages", label: "Markup Language" },
+            { name: "CSS", category: "languages", label: "Styling Language" },
+
+            // Frameworks & Libraries
+            { name: "React.js", category: "frameworks", label: "Frontend Library" },
+            { name: "Node.js", category: "frameworks", label: "Runtime Environment" },
+            { name: "Express.js", category: "frameworks", label: "Web Framework" },
+            { name: "REST APIs", category: "frameworks", label: "API Architecture" },
+            { name: "Streamlit", category: "frameworks", label: "Data App Framework" },
+            { name: "pandas", category: "frameworks", label: "Data Analysis Library" },
+            { name: "NumPy", category: "frameworks", label: "Scientific Computing" },
+            { name: "scikit-learn", category: "frameworks", label: "Machine Learning Library" },
+            { name: "Matplotlib", category: "frameworks", label: "Data Visualization" },
+
+            // Cloud & Serverless
+            { name: "AWS Lambda", category: "cloud", label: "Serverless Compute" },
+            { name: "EventBridge", category: "cloud", label: "Event Bus & Routing" },
+            { name: "SNS", category: "cloud", label: "Notification Service" },
+            { name: "DynamoDB", category: "cloud", label: "Serverless NoSQL" },
+            { name: "API Gateway", category: "cloud", label: "Managed APIs" },
+            { name: "IAM", category: "cloud", label: "Identity & Security" },
+            { name: "AWS SAM (IaC)", category: "cloud", label: "Infrastructure as Code" },
+
+            // Data & AI
+            { name: "Data Analysis", category: "ai", label: "Insights & Reporting" },
+            { name: "Cleaning & Modelling", category: "ai", label: "Data Engineering" },
+            { name: "Machine Learning", category: "ai", label: "Predictive Models" },
+            { name: "NLP", category: "ai", label: "Natural Language Processing" },
+            { name: "OCR", category: "ai", label: "Optical Character Recognition" },
+            { name: "Gemini API", category: "ai", label: "Generative AI" },
+            { name: "face-api.js", category: "ai", label: "Facial Recognition" },
+            { name: "Dashboards", category: "ai", label: "Interactive BI" },
+
+            // Databases
+            { name: "MySQL", category: "databases", label: "Relational Database" },
+            { name: "MongoDB", category: "databases", label: "Document Database" },
+            { name: "SQLite", category: "databases", label: "Embedded SQL" },
+            { name: "Firebase", category: "databases", label: "Cloud Realtime DB" },
+
+            // Tools & Platforms
+            { name: "Git", category: "tools", label: "Version Control" },
+            { name: "GitHub", category: "tools", label: "Code Collaboration" },
+            { name: "VS Code", category: "tools", label: "Code Editor" },
+            { name: "Figma", category: "tools", label: "UI/UX Design" },
+            { name: "Adobe Photoshop", category: "tools", label: "Visual Design" },
+            { name: "Windows", category: "tools", label: "Operating System" },
+            { name: "Linux (Ubuntu)", category: "tools", label: "Operating System" }
+        ];
+
+        const skillsGrid = document.getElementById('skills-grid');
+        const skillTabs = document.querySelectorAll('.skill-tab');
+
+        function renderSkills(filterCategory = 'all') {
+            const list = filterCategory === 'all'
+                ? skillsInventory
+                : skillsInventory.filter(item => item.category === filterCategory);
+
+            skillsGrid.innerHTML = list.map(skill => `
+                <div class="editorial-card rounded-2xl p-4 flex items-center gap-3">
+                    <span class="w-2.5 h-2.5 rounded-full bg-hotPink shadow-[0_0_8px_#FF4F9A] shrink-0"></span>
+                    <div class="min-w-0">
+                        <h3 class="text-xs sm:text-sm font-bold text-softWhite truncate">${skill.name}</h3>
+                        <p class="font-mono text-[10px] sm:text-[11px] text-mutedGrey truncate mt-0.5">${skill.label}</p>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        skillTabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                skillTabs.forEach(t => {
+                    t.classList.remove('active', 'bg-hotPink', 'text-nearBlack', 'font-bold', 'shadow-[0_0_16px_rgba(255,79,154,0.4)]');
+                    t.classList.add('bg-charcoal', 'text-mutedGrey', 'font-semibold', 'border', 'border-borderDark');
+                });
+                tab.classList.add('active', 'bg-hotPink', 'text-nearBlack', 'font-bold', 'shadow-[0_0_16px_rgba(255,79,154,0.4)]');
+                tab.classList.remove('bg-charcoal', 'text-mutedGrey', 'font-semibold', 'border', 'border-borderDark');
+                renderSkills(tab.dataset.filter);
+            });
+        });
+
+        renderSkills('all');
+
+        // 4. Project Category Filtering
+        const projTabs = document.querySelectorAll('.proj-tab');
+        const projectCards = document.querySelectorAll('.project-card');
+
+        projTabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                projTabs.forEach(t => {
+                    t.classList.remove('active', 'bg-hotPink', 'text-nearBlack', 'font-bold', 'shadow-[0_0_16px_rgba(255,79,154,0.4)]');
+                    t.classList.add('bg-charcoal', 'text-mutedGrey', 'font-semibold', 'border', 'border-borderDark');
+                });
+                tab.classList.add('active', 'bg-hotPink', 'text-nearBlack', 'font-bold', 'shadow-[0_0_16px_rgba(255,79,154,0.4)]');
+                tab.classList.remove('bg-charcoal', 'text-mutedGrey', 'font-semibold', 'border', 'border-borderDark');
+
+                const selected = tab.dataset.pcat;
+                projectCards.forEach(card => {
+                    const cats = card.dataset.category.split(' ');
+                    if (selected === 'all' || cats.includes(selected)) {
+                        card.classList.remove('hidden');
+                    } else {
+                        card.classList.add('hidden');
+                    }
+                });
+            });
+        });
+
+        // 5. Resume Modal Handling
+        function handleResumeClick(e) {
+            e.preventDefault();
+            toggleResumeModal(true);
+        }
+
+        function toggleResumeModal(show) {
+            const modal = document.getElementById('resume-modal');
+            modal.classList.toggle('hidden', !show);
+            modal.classList.toggle('flex', show);
+        }
+
+        function triggerResumePrint() {
+            toggleResumeModal(false);
+            window.print();
+        }
+
+        // 6. Copy to Clipboard with Toast Feedback
+        let toastTimer;
+        function showToast(msg) {
+            const toast = document.getElementById('toast');
+            document.getElementById('toast-message').textContent = msg;
+            toast.classList.remove('translate-y-24', 'opacity-0');
+            clearTimeout(toastTimer);
+            toastTimer = setTimeout(() => {
+                toast.classList.add('translate-y-24', 'opacity-0');
+            }, 3000);
+        }
+
+        function copyText(value, feedbackLabel) {
+            const textarea = document.createElement('textarea');
+            textarea.value = value;
+            document.body.appendChild(textarea);
+            textarea.select();
+            try {
+                document.execCommand('copy');
+                showToast(feedbackLabel || `Copied: ${value}`);
+            } catch (err) {
+                showToast('Could not copy automatically.');
+            }
+            document.body.removeChild(textarea);
+        }
+
+        // 7. Contact Form Validation & Mailto Trigger
+        document.getElementById('contact-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const name = document.getElementById('sender-name').value.trim();
+            const email = document.getElementById('sender-email').value.trim();
+            const subject = document.getElementById('sender-subject').value.trim() || `Portfolio Inquiry from ${name}`;
+            const message = document.getElementById('sender-message').value.trim();
+
+            const banner = document.getElementById('form-banner');
+            banner.classList.remove('hidden');
+            showToast(`Opening email draft for ${name}...`);
+
+            const bodyText = `Hi Nupoor,\n\n${message}\n\nWarm regards,\n${name} (${email})`;
+            setTimeout(() => {
+                window.location.href = `mailto:naiknupoor@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(bodyText)}`;
+            }, 750);
+
+            this.reset();
+        });
+
+        // 8. Active Navigation Link Highlighting on Scroll & IntersectionObserver Reveal
+        const allSections = document.querySelectorAll('section[id]');
+        const desktopLinks = document.querySelectorAll('.nav-link');
+
+        window.addEventListener('scroll', () => {
+            let activeId = 'home';
+            const scrollPosition = window.scrollY + 140;
+
+            allSections.forEach(sec => {
+                if (scrollPosition >= sec.offsetTop && scrollPosition < sec.offsetTop + sec.offsetHeight) {
+                    activeId = sec.getAttribute('id');
+                }
+            });
+
+            desktopLinks.forEach(link => {
+                const target = link.getAttribute('href').replace('#', '');
+                if (target === activeId) {
+                    link.classList.add('text-blushPink', 'bg-hotPink/15', 'border', 'border-hotPink/30');
+                    link.classList.remove('text-mutedGrey');
+                } else {
+                    link.classList.remove('text-blushPink', 'bg-hotPink/15', 'border', 'border-hotPink/30');
+                    link.classList.add('text-mutedGrey');
+                }
+            });
+        }, { passive: true });
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.reveal').forEach(section => observer.observe(section));
+    </script>
+</body>
+</html>
